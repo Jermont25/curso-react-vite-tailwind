@@ -17,7 +17,7 @@ const Card = (data)=> {
                 <span className='text-lg font-medium'>${data.data.price}</span>
             </p>
         </div>
-    )
+    );
 };
 
-export default Card
+export default Card;

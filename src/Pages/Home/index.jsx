@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import Layout from '../../Components/Layout'
-import Card from '../../Components/Card'
+import { useState, useEffect } from 'react';
+import Layout from '../../Components/Layout';
+import Card from '../../Components/Card';
 
 function Home() {
   const [items, setItems] = useState(null);
@@ -33,7 +33,7 @@ function Home() {
           items?.map(item => (
              <Card key={item.id} data={item} />
           ))
-        }
+        };
         </div>
         
       </Layout>
@@ -41,5 +41,5 @@ function Home() {
     )
   }
   
-  export default Home
+  export default Home;
   

@@ -1,4 +1,5 @@
 import { useRoutes, BrowserRouter } from 'react-router-dom';
+import { ContextProvider } from '../../Context/index.jsx';
 
 import './App.css';
 import Navbar from '../../Components/Navbar';
@@ -18,18 +19,20 @@ const AppRoutes = () => {
     { path: '/my-orders', element: <MyOrders />},
     { path: '/sign-in', element: <SignIn />},
     { path: '/*', element: <NotFound />},
-  ])
+  ]);
 
-  return routes
-}
+  return routes;
+};
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <AppRoutes />
-      <Navbar />
-    </BrowserRouter>
-  )
-}
+    <ContextProvider>
+      <BrowserRouter>
+        <AppRoutes />
+        <Navbar />
+      </BrowserRouter>
+    </ContextProvider>
+  );
+};
 
-export default App
+export default App;
