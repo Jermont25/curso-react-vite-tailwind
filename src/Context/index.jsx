@@ -1,10 +1,16 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 
-const Context = createContext();
+
+export const Context = createContext();
 
 export const ContextProvider = ({children}) =>{
+    const [count, setCount] = useState(0);
+    
     return (
-        <Context.Provider>
+        <Context.Provider value={{
+            count,
+            setCount
+        }}>
             {children}
         </Context.Provider>
     );

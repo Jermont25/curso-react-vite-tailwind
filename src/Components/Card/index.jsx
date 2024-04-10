@@ -1,4 +1,11 @@
+import { useContext } from 'react';
+import { Context } from '../../Context/index.jsx';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
 const Card = (data)=> {
+    const context = useContext(Context);
     return (
         <div className='bg-white cursor-pointer w-56 h-60 rounded-lg'>
             <figure className='relative mb-2 w-full h-4/5'>
@@ -7,9 +14,10 @@ const Card = (data)=> {
                     {data.data.category}
                 </span>
                 <img className='w-full h-full object-cover rounded-lg' src={data.data.image} alt={data.data.title}/>
-                <button className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
-                >
-                    +
+                <button 
+                className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
+                onClick={() => {context.setCount(context.count + 1)}}>
+                    <FontAwesomeIcon icon={faPlus} />
                 </button>
             </figure>
             <p className='flex justify-between'>

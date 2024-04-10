@@ -1,6 +1,13 @@
 import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { Context } from '../../Context/index.jsx';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
+    const context = useContext(Context);
+
     const activeStyle = 'underline underline-offset-4'
 
     return (
@@ -99,7 +106,7 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li>
-                   🛒 0
+                    <FontAwesomeIcon icon={faCartShopping} /> {context.count}
                 </li>
             </ul>
         </nav>
