@@ -1,9 +1,9 @@
+import { ShoppingBagIcon } from '@heroicons/react/24/solid';
+
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from '../../Context/index.jsx';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
     const context = useContext(Context);
@@ -105,9 +105,10 @@ const Navbar = () => {
                     Sign in
                     </NavLink>
                 </li>
-                <li>
-                    <FontAwesomeIcon icon={faCartShopping} /> {context.count}
-                </li>
+                <button className='flex items-center'>
+                    <ShoppingBagIcon className="h-6 w-6 text-black" />
+                    <div>{context.count}</div>
+                </button>
             </ul>
         </nav>
 
