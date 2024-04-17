@@ -5,10 +5,26 @@ import { Context } from '../../Context/index.jsx';
 
 const Card = (data)=> {
     const context = useContext(Context);
+
+    const showProduct = (productDetail)=> {
+        context.openProducDetail();
+        context.setProductToShow(productDetail);
+        context.closeCheckoutMenu();
+    };
+
+    const addProductToCard = (e, productData)=> {
+        e.stopPropagation();
+        context.setCount(context.count + 1);
+        context.setCardProducts([...context.cartProducts, productData]); // Esta sintaxis se usa para mantener lo existe y agregar lo demás.
+        context.openCheckoutMenu();
+        context.closeProductDetail();
+        console.log('CARD', context.cartProducts);
+    };
+
     return (
         <div 
         className='bg-white cursor-pointer w-56 h-60 rounded-lg'
-        onClick={() => context.openProducDetail()}
+        onClick={() => showProduct(data.data)}
         >
             <figure className='relative mb-2 w-full h-4/5'>
                 <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'
@@ -18,7 +34,7 @@ const Card = (data)=> {
                 <img className='w-full h-full object-cover rounded-lg' src={data.data.image} alt={data.data.title}/>
                 <button 
                 className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
-                onClick={(e) => {context.setCount(context.count + 1); e.stopPropagation();}}
+                onClick={(e)=> addProductToCard(e, data.data)}
                 >
                     <PlusIcon className="h-6 w-6 text-black"/>
                 </button>
