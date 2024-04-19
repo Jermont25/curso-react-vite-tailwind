@@ -105,7 +105,7 @@ const Navbar = () => {
                     Sign in
                     </NavLink>
                 </li>
-                <button className='flex items-center'>
+                <button className='flex items-center' onClick={()=>{context.openCheckoutMenu()}}>
                     <ShoppingBagIcon className="h-6 w-6 text-black" />
                     <div>{context.count}</div>
                 </button>
