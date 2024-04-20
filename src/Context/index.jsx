@@ -4,9 +4,6 @@ import { createContext, useState } from 'react';
 export const Context = createContext();
 
 export const ContextProvider = ({children}) =>{
-    // Shopping card . Increment quantity
-    const [count, setCount] = useState(0);
-
     // Product detail . Open/close
     const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
     const openProducDetail = ()=> setIsProductDetailOpen(true);
@@ -21,19 +18,17 @@ export const ContextProvider = ({children}) =>{
     const [productToShow, setProductToShow] = useState({});
 
     // Shopping cart . Add products to card
-    const[cartProducts, setCardProducts] = useState([]);
+    const[cartProducts, setCartProducts] = useState([]);
 
     return (
         <Context.Provider value={{
-            count,
-            setCount,
             openProducDetail,
             closeProductDetail,
             isProductDetailOpen,
             productToShow,
             setProductToShow,
             cartProducts,
-            setCardProducts,
+            setCartProducts,
             isCheckoutMenuOpen,
             openCheckoutMenu,
             closeCheckoutMenu

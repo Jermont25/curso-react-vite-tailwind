@@ -1,4 +1,4 @@
-import { PlusIcon } from '@heroicons/react/24/solid';
+import { PlusIcon, CheckIcon } from '@heroicons/react/24/solid';
 
 import { useContext } from 'react';
 import { Context } from '../../Context/index.jsx';
@@ -12,14 +12,34 @@ const Card = (data)=> {
         context.closeCheckoutMenu();
     };
 
-    const addProductToCard = (e, productData)=> {
+    const addProductToCart = (e, productData)=> {
         e.stopPropagation();
-        context.setCount(context.count + 1);
-        context.setCardProducts([...context.cartProducts, productData]); // Esta sintaxis se usa para mantener lo existe y agregar lo demás.
+        context.setCartProducts([...context.cartProducts, productData]); // Esta sintaxis se usa para mantener lo existe y agregar lo demás.
         context.openCheckoutMenu();
         context.closeProductDetail();
-        console.log('CARD', context.cartProducts);
     };
+
+    const rederIcon = (id)=> {
+        const isInCard = context.cartProducts.filter((product)=> product.id === id).length > 0;
+
+        if (isInCard) {
+            return (
+                <button 
+                    className='absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1'>
+                    <CheckIcon className="h-6 w-6 text-white"/>
+                </button>
+            );
+        } else {
+            return (
+                <button 
+                    className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
+                    onClick={(e)=> addProductToCart(e, data.data)}
+                    >
+                    <PlusIcon className="h-6 w-6 text-black"/>
+                </button>
+            );
+        }  
+    }
 
     return (
         <div 
@@ -32,12 +52,7 @@ const Card = (data)=> {
                     {data.data.category}
                 </span>
                 <img className='w-full h-full object-cover rounded-lg' src={data.data.image} alt={data.data.title}/>
-                <button 
-                className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
-                onClick={(e)=> addProductToCard(e, data.data)}
-                >
-                    <PlusIcon className="h-6 w-6 text-black"/>
-                </button>
+                {rederIcon(data.data.id)}
             </figure>
             <p className='flex justify-between'>
                 <span className='text-sm font-light'>{data.data.title}</span>
