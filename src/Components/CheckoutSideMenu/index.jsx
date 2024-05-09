@@ -5,7 +5,7 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 import './styles.css';
 
 import OrderCard from '../OrderCard';
-import { totalPrice } from '../../utils/index.js'
+import { totalPrice } from '../../utils/totalPrice.js'
 import { Link } from 'react-router-dom';
 
 const CheckoutSideMenu = () => {
