@@ -40,7 +40,7 @@ export const ContextProvider = ({ children }) => {
     (async function () {
       try {
         let res = null;
-        if (searchByCategory === null || searchByCategory === "/") {
+        if (searchByCategory === null || searchByCategory === "/all") {
           res = await fetch("https://fakestoreapi.com/products");
         } else {
           res = await fetch(
