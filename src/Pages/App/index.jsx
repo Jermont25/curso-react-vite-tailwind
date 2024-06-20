@@ -33,7 +33,7 @@ const AppRoutes = () => {
 const App = () => {
   return (
     <ContextProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/curso-react-vite-tailwind">
         <AppRoutes />
         <Navbar />
         <CheckoutSideMenu />
