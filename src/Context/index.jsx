@@ -31,16 +31,14 @@ export const ContextProvider = ({ children }) => {
   //Search products by title
   const [searchByTitle, setSearchByTitle] = useState(null);
 
-  console.log("", searchByTitle);
-
   //Search categories
-  const [searchByCategory, setSearchByCategory] = useState(null);
+  const [searchByCategory, setSearchByCategory] = useState("/");
 
   useEffect(() => {
     (async function () {
       try {
         let res = null;
-        if (searchByCategory === null || searchByCategory === "/all") {
+        if (searchByCategory === null || searchByCategory === "/") {
           res = await fetch("https://fakestoreapi.com/products");
         } else {
           res = await fetch(

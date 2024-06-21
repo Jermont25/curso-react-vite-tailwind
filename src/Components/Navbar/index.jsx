@@ -9,7 +9,7 @@ const Navbar = () => {
   const activeStyle = "underline underline-offset-4";
 
   const navLinks = [
-    { to: "/all", label: "All", category: "/all" },
+    { to: "/", label: "All", category: "/all" },
     {
       to: "/women's-clothes",
       label: "Women's clothing",
@@ -54,10 +54,7 @@ const Navbar = () => {
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
       <ul className="flex items-center gap-3">
         <li className="font-semibold text-lg">
-          <NavLink
-            to="/all"
-            onClick={() => context.setSearchByCategory("/all")}
-          >
+          <NavLink to="/" onClick={() => context.setSearchByCategory("/")}>
             Shopi
           </NavLink>
         </li>
